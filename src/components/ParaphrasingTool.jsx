@@ -22,16 +22,20 @@ export default function ParaphrasingTool() {
     }
   }, [darkMode]);
 
-  const handleParaphrase = () => {
-    // Simulate paraphrasing functionality
-    if (inputText.trim()) {
-      setOutputText(`Paraphrased version of: ${inputText}`)
-    }
-  }
+  // Listen for custom 'paraphrase' event from ContentArea
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.detail && e.detail.trim()) {
+        setOutputText(e.detail)
+      }
+    };
+    window.addEventListener('paraphrase', handler);
+    return () => window.removeEventListener('paraphrase', handler);
+  }, [setOutputText]);
 
   return (
     <>
-      <div className={`relative transition-colors duration-300 min-h-screen ${darkMode ? "bg-black" : "bg-white"}`}>
+      <div className={`relative transition-colors duration-300 min-h-screen ${darkMode ? "bg-gray-900" : "bg-white"}`}>
         {/* Header */}
         <Header showSettings={showSettings} setShowSettings={setShowSettings} darkMode={darkMode} />
 
@@ -39,9 +43,9 @@ export default function ParaphrasingTool() {
         {showSettings && (
           <>
             {/* Backdrop (no body color change) */}
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setShowSettings(false)} />
+            <div className="" onClick={() => setShowSettings(false)} />
             {/* Settings Panel */}
-            <div className="absolute top-16 right-0 z-50">
+            <div className="absolute top-16 right-16 z-50">
               <SettingsPanel darkMode={darkMode} setDarkMode={setDarkMode} onClose={() => setShowSettings(false)} />
             </div>
           </>
