@@ -35,7 +35,7 @@ export default function ParaphrasingTool() {
 
   return (
     <>
-      <div className={`relative transition-colors duration-300 min-h-screen ${darkMode ? "bg-gray-900" : "bg-white"}`}>
+      <div className={`relative min-h-screen ${darkMode ? "bg-gray-900" : "bg-white"}`}>
         {/* Header */}
         <Header showSettings={showSettings} setShowSettings={setShowSettings} darkMode={darkMode} />
 
