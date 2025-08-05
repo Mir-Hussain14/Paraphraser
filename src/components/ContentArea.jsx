@@ -44,7 +44,7 @@ export default function ContentArea({ inputText, setInputText, outputText, darkM
           {outputText && (
             <button
               className={`ml-2 px-4 py-1 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors duration-200
-                ${copied ? "bg-lime-400 text-black" : darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-gray-900 hover:bg-gray-300"}`}
+                ${copied ? "bg-lime-400 text-black" : darkMode ? "bg-[#101214] text-white hover:bg-gray-700" : "bg-gray-200 text-gray-900 hover:bg-gray-300"}`}
               onClick={() => {
                 navigator.clipboard.writeText(outputText);
                 setCopied(true);

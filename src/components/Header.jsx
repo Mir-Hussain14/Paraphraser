@@ -31,7 +31,7 @@ export default function Header({ showSettings, setShowSettings, darkMode }) {
       <div className="ml-auto">
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="w-12 h-12 bg-lime-400 hover:bg-lime-500 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2"
+          className="w-12 h-12 cursor-pointer bg-lime-400 hover:bg-lime-500 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2"
           aria-label="Open Settings"
         ></button>
       </div>
