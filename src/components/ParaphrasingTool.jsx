@@ -35,7 +35,7 @@ export default function ParaphrasingTool() {
 
   return (
     <>
-      <div className={`relative min-h-screen ${darkMode ? "bg-gray-950" : "bg-white"}`}>
+      <div className={`relative min-h-screen ${darkMode ? "bg-[#101214]" : "bg-white"}`}>
         {/* Header */}
         <Header showSettings={showSettings} setShowSettings={setShowSettings} darkMode={darkMode} />
 
