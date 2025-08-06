@@ -11,6 +11,7 @@ export default function ParaphrasingTool() {
   const [inputText, setInputText] = useState("")
   const [outputText, setOutputText] = useState("")
   const [showSettings, setShowSettings] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   // Toggle dark mode class on root element
   useEffect(() => {
@@ -24,14 +25,33 @@ export default function ParaphrasingTool() {
 
   // Listen for custom 'paraphrase' event from ContentArea
   useEffect(() => {
-    const handler = (e) => {
+    const handler = async (e) => {
       if (e.detail && e.detail.trim()) {
-        setOutputText(e.detail)
+        setLoading(true);
+        setOutputText("");
+        try {
+          const response = await fetch("http://35.193.25.179:8000/paraphraser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              input_text: e.detail,
+              mode: activeMode.toLowerCase()
+            })
+          });
+          const data = await response.json();
+          setOutputText(data.paraphrased_text || "Error: No paraphrased text returned.");
+        } catch (err) {
+          setOutputText("Error: Unable to paraphrase. Please try again.");
+        } finally {
+          setLoading(false);
+        }
       }
     };
     window.addEventListener('paraphrase', handler);
     return () => window.removeEventListener('paraphrase', handler);
-  }, [setOutputText]);
+  }, [setOutputText, activeMode]);
 
   return (
     <>
@@ -58,7 +78,13 @@ export default function ParaphrasingTool() {
 
         {/* Content Area */}
         <div className="mt-2 px-8">
-          <ContentArea inputText={inputText} setInputText={setInputText} outputText={outputText} darkMode={darkMode} />
+          <ContentArea
+            inputText={inputText}
+            setInputText={setInputText}
+            outputText={outputText}
+            darkMode={darkMode}
+            loading={loading}
+          />
         </div>
       </div>
     </>

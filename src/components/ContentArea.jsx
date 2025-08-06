@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ParaphraseButton from "./ParaphraseButton";
 
-export default function ContentArea({ inputText, setInputText, outputText, darkMode }) {
+export default function ContentArea({ inputText, setInputText, outputText, darkMode, loading }) {
   const [copied, setCopied] = useState(false);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -25,7 +25,14 @@ export default function ContentArea({ inputText, setInputText, outputText, darkM
         />
         <div className="flex justify-end">
           {/* ParaphraseButton should trigger outputText update, not setInputText */}
-          <ParaphraseButton onClick={() => window.dispatchEvent(new CustomEvent('paraphrase', { detail: inputText }))} />
+          <ParaphraseButton
+            onClick={() => {
+              if (!loading && inputText.trim()) {
+                window.dispatchEvent(new CustomEvent('paraphrase', { detail: inputText }));
+              }
+            }}
+            loading={loading}
+          />
         </div>
       </div>
 
