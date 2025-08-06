@@ -30,7 +30,9 @@ export default function ParaphrasingTool() {
         setLoading(true);
         setOutputText("");
         try {
-          const response = await fetch("http://35.193.25.179:8000/paraphraser", {
+          const apiProtocol = window.location.protocol === 'https:' ? 'https' : 'http';
+          const apiUrl = `${apiProtocol}://35.193.25.179:8000/paraphraser`;
+          const response = await fetch(apiUrl, {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
