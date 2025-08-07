@@ -34,7 +34,7 @@ export default function Header({ showSettings, setShowSettings, darkMode }) {
               darkMode ? "text-white" : "text-gray-900"
             }`}
           >
-            Paraphrasing
+            Paraphraser
           </h1>
         </Link>
       </div>
