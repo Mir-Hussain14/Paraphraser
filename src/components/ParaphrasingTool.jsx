@@ -6,17 +6,6 @@ export default function ParaphrasingTool( { darkMode, setDarkMode }) {
   const [inputText, setInputText] = useState("")
   const [outputText, setOutputText] = useState("")
   const [loading, setLoading] = useState(false);
-
-  // Toggle dark mode class on root element
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [darkMode]);
-
   // Listen for custom 'paraphrase' event from ContentArea
   useEffect(() => {
     const handler = async (e) => {
@@ -51,9 +40,6 @@ export default function ParaphrasingTool( { darkMode, setDarkMode }) {
 
   return (
     <>
-      <div className={`relative min-h-screen ${darkMode ? "bg-[#101214]" : "bg-white"}`}>
-
-
         {/* Mode Selector */}
         <div className="px-8 lg:mt-4">
           <ModeSelector activeMode={activeMode} setActiveMode={setActiveMode} darkMode={darkMode} />
@@ -69,7 +55,6 @@ export default function ParaphrasingTool( { darkMode, setDarkMode }) {
             loading={loading}
           />
         </div>
-      </div>
     </>
   )
 }

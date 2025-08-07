@@ -1,21 +1,32 @@
+import { Link } from "react-router-dom";
+
 export default function Header({ showSettings, setShowSettings, darkMode }) {
   return (
-    <div className="flex py-4 px-8 border-b border-gray-300 items-center justify-between lg:justify-start">
+    <div
+      className={`flex py-4 px-8 border-b border-gray-300 items-center justify-between lg:justify-start ${
+        darkMode ? "bg-[#101214]" : "bg-white"
+      } transition-colors duration-300`}
+    >
       <div className="flex items-center space-x-4">
-        {/* Logo */}
-        <div
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
-            darkMode ? "bg-gray-700" : "bg-gray-300"
-          }`}
+        {/* Logo with Home link */}
+        <Link
+          to="/"
+          className="w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300"
         >
-          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <div
-              className={`w-4 h-4 rounded-full transition-colors duration-300 ${
-                darkMode ? "bg-gray-600" : "bg-gray-400"
-              }`}
-            ></div>
+          <div
+            className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
+              darkMode ? "bg-gray-700" : "bg-gray-300"
+            }`}
+          >
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <div
+                className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+                  darkMode ? "bg-gray-600" : "bg-gray-400"
+                }`}
+              ></div>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* Title */}
         <h1
@@ -36,5 +47,5 @@ export default function Header({ showSettings, setShowSettings, darkMode }) {
         ></button>
       </div>
     </div>
-  )
+  );
 }
