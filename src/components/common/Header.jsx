@@ -8,11 +8,12 @@ export default function Header({ showSettings, setShowSettings, darkMode }) {
       } transition-colors duration-300`}
     >
       <div className="flex items-center space-x-4">
-        {/* Logo with Home link */}
+        {/* Link wrapping the entire Logo and Title */}
         <Link
           to="/"
-          className="w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300"
+          className="flex items-center space-x-4 transition-colors duration-300"
         >
+          {/* Logo */}
           <div
             className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
               darkMode ? "bg-gray-700" : "bg-gray-300"
@@ -26,16 +27,16 @@ export default function Header({ showSettings, setShowSettings, darkMode }) {
               ></div>
             </div>
           </div>
-        </Link>
 
-        {/* Title */}
-        <h1
-          className={`text-2xl lg:text-3xl font-medium transition-colors duration-300 ${
-            darkMode ? "text-white" : "text-gray-900"
-          }`}
-        >
-          Paraphrasing
-        </h1>
+          {/* Title */}
+          <h1
+            className={`text-2xl lg:text-3xl font-medium transition-colors duration-300 ${
+              darkMode ? "text-white" : "text-gray-900"
+            }`}
+          >
+            Paraphrasing
+          </h1>
+        </Link>
       </div>
 
       {/* Settings Trigger - Green circle that opens settings */}
