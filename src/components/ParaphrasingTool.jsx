@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react"
-import Header from "./Header"
-import SettingsPanel from "./SettingsPanel"
 import ModeSelector from "./ModeSelector"
 import ContentArea from "./ContentArea"
-import ParaphraseButton from "./ParaphraseButton"
-
-export default function ParaphrasingTool() {
+export default function ParaphrasingTool( { darkMode, setDarkMode }) {
   const [activeMode, setActiveMode] = useState("Standard")
-  const [darkMode, setDarkMode] = useState(false)
   const [inputText, setInputText] = useState("")
   const [outputText, setOutputText] = useState("")
-  const [showSettings, setShowSettings] = useState(false)
   const [loading, setLoading] = useState(false);
 
   // Toggle dark mode class on root element
@@ -58,20 +52,7 @@ export default function ParaphrasingTool() {
   return (
     <>
       <div className={`relative min-h-screen ${darkMode ? "bg-[#101214]" : "bg-white"}`}>
-        {/* Header */}
-        <Header showSettings={showSettings} setShowSettings={setShowSettings} darkMode={darkMode} />
 
-        {/* Settings Panel - Popup */}
-        {showSettings && (
-          <>
-            {/* Backdrop (no body color change) */}
-            <div className="" onClick={() => setShowSettings(false)} />
-            {/* Settings Panel */}
-            <div className="absolute top-16 right-16 z-50">
-              <SettingsPanel darkMode={darkMode} setDarkMode={setDarkMode} onClose={() => setShowSettings(false)} />
-            </div>
-          </>
-        )}
 
         {/* Mode Selector */}
         <div className="px-8 lg:mt-4">
