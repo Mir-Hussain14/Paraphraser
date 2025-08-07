@@ -6,7 +6,7 @@ export const Footer = ({ darkMode }) => {
   const footerStyle = darkMode ? "bg-black text-white" : "bg-white text-black";
 
   return (
-    <div className={`${footerStyle} p-4`}>
+    <div className={`${footerStyle} pb-3 pt-8 ${darkMode ? "border-t border-gray-700" : "border-t border-gray-300"} `}>
       <p className="text-center">
         © Copyright 2025 All rights reserved.
         <Link to="/privacy" className="ml-2 hover:underline">
