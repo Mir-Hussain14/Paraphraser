@@ -4,7 +4,7 @@ export default function SettingsPanel({ darkMode, setDarkMode, onClose }) {
   return (
     <div
       className={`rounded-xl shadow-lg border p-4 w-64 transition-colors duration-300 ${
-        darkMode ? "bg-[#101214] border-gray-900" : "bg-white border-gray-200"
+        darkMode ? "bg-[#101214] border-gray-700" : "bg-white border-gray-200"
       }`}
     >
 
