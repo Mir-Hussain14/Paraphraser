@@ -4,12 +4,9 @@ import Home from "./pages/Home";
 import { Privacy } from "./pages/Privacy";
 import { TermOfService } from "./pages/TermOfService";
 import { Disclaimer } from "./pages/Disclaimer";
-<<<<<<< HEAD
 import SignupForm from "./pages/SignupForm";
 import LoginForm from "./pages/Login";
-=======
 import { Settings } from "./pages/Settings";
->>>>>>> 0befbbdf2e20432ff0514d30467936c7b0a96f6d
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +28,7 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupForm />,
+
       },
       {
         path: "login",
